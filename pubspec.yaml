@@ -1,0 +1,55 @@
+name: ten20
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.1+2
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  flutter_launcher_icons: ^0.13.1
+  intl: ^0.19.0
+  http: ^1.2.2
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/splash_screen_image.png" # Updated to point to your app icon image
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/images/assistants/
+    - assets/images/drink/
+    - assets/images/membership/
+    - assets/images/nails/
+    - assets/images/pilates/
+    - assets/images/services/
+    # If you have multiple resolution-specific variants, add them here:
+    # - assets/images/splash_screen_image@2x.png
+    # - assets/images/splash_screen_image@3x.png
+
+  fonts:
+    - family: Sunflora
+      fonts:
+        - asset: assets/fonts/Sunflora-Regular.ttf
+    - family: CeraPro
+      fonts:
+        - asset: assets/fonts/CeraPro-Light.ttf
+    - family: KapraNeueProRegular
+      fonts:
+        - asset: assets/fonts/Kapra-Neue-Pro-Regular.otf
