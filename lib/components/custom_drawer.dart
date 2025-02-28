@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ten20/screens/favorites/favorites.dart';
+import 'package:ten20/screens/notifications/notifications.dart';
+import 'package:ten20/screens/profile/profile.dart';
+import 'package:ten20/screens/wallet/wallet.dart';
 import 'package:ten20/utils/constants.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -45,28 +49,41 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.favorite),
               title: const Text('Favorites'),
               onTap: () {
-                // Handle tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FavoritesScreen()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
               onTap: () {
-                // Handle tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.notifications),
               title: const Text('Notifications'),
               onTap: () {
-                // Handle tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotificationsScreen()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.wallet),
               title: const Text('Wallet'),
               onTap: () {
-                // Handle tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WalletScreen()),
+                );
               },
             ),
           ],
