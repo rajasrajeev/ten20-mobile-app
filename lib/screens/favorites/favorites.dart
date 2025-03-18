@@ -11,34 +11,6 @@ class FavoritesScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Favorites Header
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Favorite',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.tune, size: 20),
-                      SizedBox(width: 12),
-                      CircleAvatar(
-                        radius: 14,
-                        backgroundImage: NetworkImage(
-                            'https://randomuser.me/api/portraits/women/44.jpg'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
             // Search Bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -79,57 +51,36 @@ class FavoritesScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildFavoriteItem(
-                      context,
-                      'Protein Shakes',
-                      'A blend of protein powder and milk',
-                      'assets/protein_shake.jpg'),
-                  _buildFavoriteItem(
-                      context,
-                      'Smoothies',
-                      'Fresh fruits blended with yogurt or milk',
-                      'assets/smoothie.jpg'),
-                  _buildFavoriteItem(
-                      context,
-                      'Pre-Workout Drinks',
-                      'Energy boost drinks for before exercise',
-                      'assets/pre_workout.jpg'),
-                  _buildFavoriteItem(
-                      context,
-                      'Post-Workout Drinks',
-                      'Recovery drinks with electrolytes',
-                      'assets/post_workout.jpg'),
-                  _buildFavoriteItem(
-                      context,
-                      'Hydration Drinks',
-                      'Water with added electrolytes and minerals',
-                      'assets/hydration.jpg'),
-                  _buildFavoriteItem(
-                      context,
-                      'Hot Drinks',
-                      'Coffee, tea, and other warm beverages',
-                      'assets/hot_drink.jpg'),
-                ],
-              ),
-            ),
-
-            // Bottom Navigation
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFE6D7E9),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildNavItem(Icons.home_outlined, false),
-                  _buildNavItem(Icons.search_outlined, true),
-                  _buildNavItem(Icons.person_outline, false),
-                  _buildNavItem(Icons.menu, false),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Protein Shakes',
+                  //     'A blend of protein powder and milk',
+                  //     'assets/protein_shake.jpg'),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Smoothies',
+                  //     'Fresh fruits blended with yogurt or milk',
+                  //     'assets/smoothie.jpg'),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Pre-Workout Drinks',
+                  //     'Energy boost drinks for before exercise',
+                  //     'assets/pre_workout.jpg'),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Post-Workout Drinks',
+                  //     'Recovery drinks with electrolytes',
+                  //     'assets/post_workout.jpg'),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Hydration Drinks',
+                  //     'Water with added electrolytes and minerals',
+                  //     'assets/hydration.jpg'),
+                  // _buildFavoriteItem(
+                  //     context,
+                  //     'Hot Drinks',
+                  //     'Coffee, tea, and other warm beverages',
+                  //     'assets/hot_drink.jpg'),
                 ],
               ),
             ),

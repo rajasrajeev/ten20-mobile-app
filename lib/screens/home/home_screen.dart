@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ten20/components/custom_app_bar.dart';
 import 'package:ten20/components/custom_drawer.dart';
 import 'package:ten20/screens/home/hair_bar/hair_bar_home.dart';
@@ -16,13 +17,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String firstName = '';
+  String lastName = '';
   final ApiService apiService = ApiService();
   dynamic services = [];
 
   @override
   void initState() {
     super.initState();
+    _loadUserData();
     getServices();
+  }
+
+  Future<void> _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      firstName = prefs.getString('firstName') ?? '';
+      lastName = prefs.getString('lastName') ?? '';
+    });
   }
 
   void getServices() async {
@@ -51,10 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 12, bottom: 100),
-              child: Text("Hello, Sam",
-                  style: TextStyle(color: Colors.black, fontSize: 20)),
+            Padding(
+              padding: const EdgeInsets.only(left: 12, bottom: 100),
+              child: Text("Hello, $firstName",
+                  style: const TextStyle(color: Colors.black, fontSize: 20)),
             ),
             Expanded(
               child: GridView.builder(

@@ -1,54 +1,55 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:ten20/components/category_card.dart';
-
 import 'package:ten20/components/custom_layout_inner.dart';
-import 'package:ten20/model/category_item.dart';
-import 'package:ten20/screens/home/hair_bar/pages/sub_service.dart';
+import 'package:ten20/components/service_card.dart';
+import 'package:ten20/model/service_item.dart';
+import 'package:ten20/screens/home/pilates_loft/pages/assistant_screen.dart';
 import 'package:ten20/utils/api_service.dart';
 import 'package:ten20/utils/constants.dart';
 
-class HairBarPage extends StatefulWidget {
+class SubServicePage extends StatefulWidget {
   int id;
-  HairBarPage({
-    super.key,
-    required this.id,
-  });
+  int selectedServiceId;
+  SubServicePage(
+      {required this.id, required this.selectedServiceId, super.key});
 
   @override
-  State<HairBarPage> createState() => _HairBarPageState();
+  State<SubServicePage> createState() => _SubServicePageState();
 }
 
-class _HairBarPageState extends State<HairBarPage> {
-  late ApiService apiService;
-  late TextEditingController _controller;
-  List<CategoryItem> services = [];
+class _SubServicePageState extends State<SubServicePage> {
+  final ApiService apiService = ApiService();
+  final TextEditingController _controller = TextEditingController();
+  List<ServiceItem> services = [];
 
   @override
   void initState() {
     super.initState();
-    apiService = ApiService();
-    _controller = TextEditingController();
+    print("called"); // Debugging print statement
     getServices();
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   void getServices() async {
+    print("called here ==>");
     try {
-      var result = await apiService.get_categories(widget.id, null);
+      var result = await apiService.get_sub_services(widget.selectedServiceId);
+      print(result);
 
       if (result.isNotEmpty) {
-        List<CategoryItem> serviceItems = result.map<CategoryItem>((data) {
-          return CategoryItem(id: int.parse(data['id']), title: data['name']);
+        // Map each dynamic item to a ServiceItem instance
+        List<ServiceItem> serviceItems = result.map<ServiceItem>((data) {
+          return ServiceItem(
+            id: int.parse(data['id']),
+            imageUrl: "$imageUrl/${data['image']}",
+            title: data['name'],
+            price: data['price'],
+            description: data['description'],
+          );
         }).toList();
 
         if (serviceItems.isNotEmpty) {
+          loadUserId();
           setState(() {
             services = serviceItems;
           });
@@ -62,14 +63,20 @@ class _HairBarPageState extends State<HairBarPage> {
   void fetchDataOnTextChange(String changeValue) async {
     try {
       if (changeValue.isNotEmpty) {
+        // If there's a search term, fetch filtered sub-services
         var result =
             await apiService.get_sub_services_s(widget.id, changeValue);
 
         if (result.isNotEmpty) {
-          List<CategoryItem> serviceItems = result.map<CategoryItem>((data) {
-            return CategoryItem(
+          // Process the response data
+          print("Data fetched successfully: $result");
+          List<ServiceItem> serviceItems = result.map<ServiceItem>((data) {
+            return ServiceItem(
               id: int.parse(data['id']),
+              imageUrl: "$imageUrl/${data['image']}",
               title: data['name'],
+              price: data['price'],
+              description: data['description'],
             );
           }).toList();
 
@@ -78,6 +85,7 @@ class _HairBarPageState extends State<HairBarPage> {
           });
         }
       } else {
+        // If the search term is empty, fetch all services
         getServices();
       }
     } catch (e) {
@@ -103,7 +111,7 @@ class _HairBarPageState extends State<HairBarPage> {
                     color: Colors.black,
                   ),
                 ),
-                const Text('Select Service', style: contentHeader)
+                const Text('Select Service', style: contentHeader),
               ],
             ),
             const SizedBox(height: 10),
@@ -111,7 +119,7 @@ class _HairBarPageState extends State<HairBarPage> {
               padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
               child: TextField(
                 controller: _controller,
-                onChanged: fetchDataOnTextChange,
+                // onChanged: fetchDataOnTextChange,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -142,22 +150,27 @@ class _HairBarPageState extends State<HairBarPage> {
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SubServicePage(
-                                id: widget.id,
-                                selectedServiceId: service.id,
-                              )));
+                          builder: (context) => AssistantScreen(
+                              id: widget.id,
+                              selectedService: service.id,
+                              price: service.price,
+                              image: service.imageUrl,
+                              title: service.title)));
                     },
-                    child: CategoryCard(
+                    child: ServiceCard(
+                      imageUrl: service.imageUrl,
                       title: service.title,
+                      price: service.price,
+                      description: "",
                     ),
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
-      title: 'Hair Bar',
+      title: 'Pilates Loft',
     );
   }
 }

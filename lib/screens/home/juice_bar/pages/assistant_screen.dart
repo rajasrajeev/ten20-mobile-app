@@ -72,6 +72,7 @@ class AssistantScreen extends StatelessWidget {
                       child: ServiceCard(
                         imageUrl: service.imageUrl,
                         title: service.title,
+                        price: service.price,
                         description: service.description,
                       ),
                     );

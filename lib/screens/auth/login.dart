@@ -39,10 +39,13 @@ class _LoginState extends State<Login> {
       if (_controller.text.isNotEmpty && _controller2.text.isNotEmpty) {
         var result =
             await apiService.login(_controller.text, _controller2.text);
-        print("data ===> login");
-        print(result);
-        if (result is Map && result.containsKey('id')) {
-          saveUserId(result['id'].toString());
+        if (result[0] is Map && result[0].containsKey('id')) {
+          saveUserId(
+              result[0]['id'].toString(),
+              result[0]['first_name'].toString(),
+              result[0]['last_name'],
+              result[0]['address'],
+              result[0]['email']);
           showAlert(context,
               title: "Success", message: "You have logged in successfully");
           Navigator.of(context).pushReplacement(
@@ -51,8 +54,6 @@ class _LoginState extends State<Login> {
           showAlert(context,
               title: "Failed", message: "Username or Password is incorrect");
         }
-        print("Result ====> ");
-        print(result.toString());
       } else {
         showAlert(context,
             title: "Error",
@@ -70,23 +71,27 @@ class _LoginState extends State<Login> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 100),
-            Padding(
-              padding: const EdgeInsets.only(left: 100),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.width / 3,
-                child: Image.asset(
-                  'assets/images/splash_screen_image.png',
-                  fit: BoxFit.fill,
+            const SizedBox(height: 50),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.width / 3,
+                  child: Image.asset(
+                    'assets/images/splash_screen_image.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(70, 0, 30, 0),
-              child: Text(
-                'Sign in to your account',
-                style: TextStyle(fontSize: 20),
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(70, 0, 30, 0),
+                child: Text(
+                  'Sign in to your account',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             const SizedBox(height: 30),

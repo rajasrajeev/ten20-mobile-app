@@ -70,9 +70,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   style: TextStyle(color: Colors.black),
                 ),
           onPressed: () {
-            setState(() {
-              showProfileImage = !showProfileImage;
-            });
+            // setState(() {
+            //   showProfileImage = !showProfileImage;
+            // });
           },
         ),
         const SizedBox(width: 16), // Spacing between icon and edge

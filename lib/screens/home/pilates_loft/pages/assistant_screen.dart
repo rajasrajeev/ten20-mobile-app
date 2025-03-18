@@ -13,11 +13,13 @@ class AssistantScreen extends StatefulWidget {
   int selectedService;
   String image;
   String title;
+  String price;
   AssistantScreen(
       {required this.id,
       required this.selectedService,
       required this.image,
       required this.title,
+      required this.price,
       super.key});
 
   @override
@@ -41,6 +43,7 @@ class _AssistantScreenState extends State<AssistantScreen> {
             id: int.parse(data['id']),
             imageUrl: "$imageUrl/${data['image']}",
             title: data['name'],
+            price: "",
             description: "",
           );
         }).toList();
@@ -102,6 +105,7 @@ class _AssistantScreenState extends State<AssistantScreen> {
                             builder: (context) => AppointmentScreen(
                                   id: widget.id,
                                   selectedServiceId: widget.selectedService,
+                                  price: widget.price,
                                   imageUrl: widget.image,
                                   serviceName: widget.title,
                                   assistantName: assistants[index].title,

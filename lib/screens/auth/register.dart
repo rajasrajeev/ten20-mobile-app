@@ -47,7 +47,12 @@ class _RegisterState extends State<Register> {
         var result = await apiService.register(_controller.text,
             _controller2.text, _controller3.text, _controller4.text);
         if (result != 0) {
-          saveUserId(result.toString());
+          saveUserId(
+              result[0]['id'].toString(),
+              result[0]['first_name'].toString(),
+              result[0]['last_name'],
+              result[0]['address'],
+              result[0]['email']);
           showAlert(context,
               title: "Success", message: "You have registered successfully");
           Navigator.of(context).pushReplacement(
@@ -73,14 +78,16 @@ class _RegisterState extends State<Register> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Padding(
-              padding: const EdgeInsets.only(left: 0),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.width / 3,
-                child: Image.asset(
-                  'assets/images/splash_screen_image.png',
-                  fit: BoxFit.fill,
+            const SizedBox(height: 30),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.width / 3,
+                  child: Image.asset(
+                    'assets/images/splash_screen_image.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),

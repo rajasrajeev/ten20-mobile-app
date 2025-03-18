@@ -26,35 +26,6 @@ class _WalletScreenState extends State<WalletScreen> {
           SafeArea(
             child: Column(
               children: [
-                // Wallet Header
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'My Wallet',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.tune, size: 20),
-                          SizedBox(width: 12),
-                          CircleAvatar(
-                            radius: 14,
-                            backgroundImage: NetworkImage(
-                                'https://randomuser.me/api/portraits/women/44.jpg'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
                 // Balance Card
                 Container(
                   margin: const EdgeInsets.all(16),
@@ -161,27 +132,6 @@ class _WalletScreenState extends State<WalletScreen> {
                         'assets/smoothie.jpg',
                       );
                     },
-                  ),
-                ),
-
-                // Bottom Navigation
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFE6D7E9),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildNavItem(Icons.home_outlined, false),
-                      _buildNavItem(Icons.credit_card, true),
-                      _buildNavItem(Icons.person_outline, false),
-                      _buildNavItem(Icons.menu, false),
-                    ],
                   ),
                 ),
               ],

@@ -74,6 +74,7 @@ class JuiceBarPage extends StatelessWidget {
                       },
                       child: ServiceCard(
                         imageUrl: service.imageUrl,
+                        price: service.price,
                         title: service.title,
                         description: service.description,
                       ),

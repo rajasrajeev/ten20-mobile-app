@@ -1,11 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-
+import 'package:ten20/components/category_card.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
-import 'package:ten20/components/service_card.dart';
-import 'package:ten20/model/service_item.dart';
-import 'package:ten20/screens/home/pilates_loft/pages/assistant_screen.dart';
+import 'package:ten20/model/category_item.dart';
+import 'package:ten20/screens/home/pilates_loft/pages/sub_services.dart';
 import 'package:ten20/utils/api_service.dart';
 import 'package:ten20/utils/constants.dart';
 
@@ -23,7 +22,7 @@ class PilatesLoftPage extends StatefulWidget {
 class _PilatesLoftPageState extends State<PilatesLoftPage> {
   late ApiService apiService;
   late TextEditingController _controller;
-  List<ServiceItem> services = [];
+  List<CategoryItem> services = [];
 
   @override
   void initState() {
@@ -41,19 +40,16 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
 
   void getServices() async {
     try {
-      var result = await apiService.get_sub_services(widget.id);
+      var result = await apiService.get_categories(widget.id, null);
 
       if (result.isNotEmpty) {
-        List<ServiceItem> serviceItems = result.map<ServiceItem>((data) {
-          return ServiceItem(
-            id: int.parse(data['id']),
-            imageUrl: "$imageUrl/${data['image']}",
-            title: data['name'],
-            description: data['description'],
-          );
+        // Map each dynamic item to a ServiceItem instance
+        List<CategoryItem> serviceItems = result.map<CategoryItem>((data) {
+          return CategoryItem(id: int.parse(data['id']), title: data['name']);
         }).toList();
 
         if (serviceItems.isNotEmpty) {
+          loadUserId();
           setState(() {
             services = serviceItems;
           });
@@ -67,17 +63,11 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
   void fetchDataOnTextChange(String changeValue) async {
     try {
       if (changeValue.isNotEmpty) {
-        var result =
-            await apiService.get_sub_services_s(widget.id, changeValue);
+        var result = await apiService.get_categories(widget.id, changeValue);
 
         if (result.isNotEmpty) {
-          List<ServiceItem> serviceItems = result.map<ServiceItem>((data) {
-            return ServiceItem(
-              id: int.parse(data['id']),
-              imageUrl: "$imageUrl/${data['image']}",
-              title: data['name'],
-              description: data['description'],
-            );
+          List<CategoryItem> serviceItems = result.map<CategoryItem>((data) {
+            return CategoryItem(id: int.parse(data['id']), title: data['name']);
           }).toList();
 
           setState(() {
@@ -110,7 +100,7 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
                     color: Colors.black,
                   ),
                 ),
-                const Text('Select Service', style: contentHeader)
+                const Text('Select Categories', style: contentHeader)
               ],
             ),
             const SizedBox(height: 10),
@@ -147,20 +137,14 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
                 itemBuilder: (context, index) {
                   final service = services[index];
                   return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AssistantScreen(
-                              id: widget.id,
-                              selectedService: service.id,
-                              image: service.imageUrl,
-                              title: service.title)));
-                    },
-                    child: ServiceCard(
-                      imageUrl: service.imageUrl,
-                      title: service.title,
-                      description: service.description,
-                    ),
-                  );
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SubServicePage(
+                                id: widget.id, selectedServiceId: service.id)));
+                      },
+                      child: CategoryCard(
+                        title: service.title,
+                      ));
                 },
               ),
             )

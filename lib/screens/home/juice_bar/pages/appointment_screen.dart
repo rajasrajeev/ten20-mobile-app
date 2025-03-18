@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:ten20/components/custom_button.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 import 'package:ten20/components/service_card.dart';
-import 'package:ten20/screens/home/hair_bar/pages/payment_scree.dart';
+import 'package:ten20/screens/home/juice_bar/pages/order_final_screen.dart';
 import 'package:ten20/utils/constants.dart';
 
 class AppointmentScreen extends StatefulWidget {
@@ -143,6 +143,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               const ServiceCard(
                   imageUrl: "assets/images/splash_screen_image.png",
                   title: "Hair Cut",
+                  price: "25",
                   description: "by Kenneth Allen"),
               const SizedBox(height: 10),
               Row(
@@ -245,8 +246,23 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   vertical: 10.0,
                   horizontal: 5.0,
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const PaymentScreen()));
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        Future.delayed(const Duration(seconds: 2), () {
+                          Navigator.of(context).pop();
+                          showAlert(context,
+                              title: "Success",
+                              message: "Appointment Successful!!!");
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const OrderFinalScreen()));
+                        });
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
                   },
                 ),
               )

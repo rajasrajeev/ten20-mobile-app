@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ten20/screens/favorites/favorites.dart';
+import 'package:ten20/screens/home/home_screen.dart';
 import 'package:ten20/screens/notifications/notifications.dart';
 import 'package:ten20/screens/profile/profile.dart';
 import 'package:ten20/screens/splash/splash_screen.dart';
@@ -24,11 +25,11 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       routes: {
-        '/favorites': (context) => FavoritesScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/favorites': (context) => const FavoritesScreen(),
         '/profile': (context) => const ProfileScreen(),
-        '/notifications': (context) => NotificationsScreen(),
-        '/wallet': (context) => WalletScreen(),
-        // Add other routes here
+        '/notifications': (context) => const NotificationsScreen(),
+        '/wallet': (context) => const WalletScreen(),
       },
     );
   }

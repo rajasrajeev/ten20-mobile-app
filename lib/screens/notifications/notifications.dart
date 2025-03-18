@@ -11,34 +11,6 @@ class NotificationsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Notifications Header
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Notifications',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.tune, size: 20),
-                      SizedBox(width: 12),
-                      CircleAvatar(
-                        radius: 14,
-                        backgroundImage: NetworkImage(
-                            'https://randomuser.me/api/portraits/women/44.jpg'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
             // Notifications List
             Expanded(
               child: ListView(
@@ -64,27 +36,6 @@ class NotificationsScreen extends StatelessWidget {
                       'assets/smoothie.jpg',
                       null,
                       false),
-                ],
-              ),
-            ),
-
-            // Bottom Navigation
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFE6D7E9),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildNavItem(Icons.home_outlined, false),
-                  _buildNavItem(Icons.search_outlined, false),
-                  _buildNavItem(Icons.notifications_outlined, true),
-                  _buildNavItem(Icons.menu, false),
                 ],
               ),
             ),

@@ -5,6 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const String baseUrl = "https://ten20socialclub.connecti-fy.com/admin/Api";
 const String imageUrl = "https://ten20socialclub.connecti-fy.com/";
+// const String baseUrl =
+//     "https://ac4f-2406-8800-81-b3a6-c7ca-a956-5d61-5436.ngrok-free.app/ten20/admin/Api";
+// const String imageUrl =
+//     "https://ac4f-2406-8800-81-b3a6-c7ca-a956-5d61-5436.ngrok-free.app/ten20/";
 
 // Define color constants
 const Color kNailsDinerColor = Color.fromARGB(255, 217, 184, 216);
@@ -26,23 +30,25 @@ const TextStyle contentHeader = TextStyle(
 // Function to show an alert dialog
 void showAlert(BuildContext context,
     {String title = "Alert", String message = "Something went wrong"}) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(title, style: contentHeader),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Close the dialog
-            },
-            child: const Text("OK", style: TextStyle(color: Colors.blue)),
-          ),
-        ],
-      );
-    },
-  );
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title, style: contentHeader),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK", style: TextStyle(color: Colors.blue)),
+            ),
+          ],
+        );
+      },
+    );
+  });
 }
 
 // Variable to track login status and user ID
@@ -50,9 +56,14 @@ bool isLoggedIn = false;
 String? userId;
 
 // Function to save user ID and login status
-Future<void> saveUserId(String id) async {
+Future<void> saveUserId(String id, String firstName, String lastName,
+    String address, String email) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString('userId', id);
+  await prefs.setString('firstName', firstName);
+  await prefs.setString('lastName', lastName);
+  await prefs.setString('address', address);
+  await prefs.setString('email', email);
   await prefs.setBool('isLoggedIn', true);
   userId = id;
   isLoggedIn = true;

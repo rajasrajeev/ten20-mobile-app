@@ -74,6 +74,7 @@ class MembershipScreen extends StatelessWidget {
                           imageUrl: service.imageUrl,
                           title: service.title,
                           description: service.description,
+                          price: service.price,
                           height: 130),
                     );
                   },

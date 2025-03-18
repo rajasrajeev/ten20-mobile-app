@@ -5,18 +5,21 @@ import 'package:intl/intl.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 import 'package:ten20/components/custom_button.dart';
 import 'package:ten20/components/service_card.dart';
+import 'package:ten20/screens/home/pilates_loft/pages/order_final_screen.dart';
 // import 'package:ten20/screens/home/pilates_loft/pages/payment_scree.dart';
 import 'package:ten20/utils/constants.dart';
 
 class AppointmentScreen extends StatefulWidget {
   int id;
   int selectedServiceId;
+  String price;
   String imageUrl;
   String serviceName;
   String assistantName;
   AppointmentScreen({
     super.key,
     required this.id,
+    required this.price,
     required this.selectedServiceId,
     required this.imageUrl,
     required this.serviceName,
@@ -157,6 +160,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               ServiceCard(
                   imageUrl: widget.imageUrl,
                   title: widget.serviceName,
+                  price: widget.price,
                   description: "by ${widget.assistantName}"),
               const SizedBox(height: 10),
               Row(
@@ -259,8 +263,23 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   vertical: 10.0,
                   horizontal: 5.0,
                   onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => const PaymentScreen()));
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        Future.delayed(const Duration(seconds: 2), () {
+                          Navigator.of(context).pop();
+                          showAlert(context,
+                              title: "Success",
+                              message: "Appointment Successful!!!");
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const OrderFinalScreen()));
+                        });
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
                   },
                 ),
               )
