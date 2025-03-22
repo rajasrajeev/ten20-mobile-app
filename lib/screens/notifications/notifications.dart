@@ -14,23 +14,7 @@ class NotificationsScreen extends StatelessWidget {
             // Notifications List
             Expanded(
               child: ListView(
-                children: [
-                  _buildNotificationItem(context, '', '', '', '', true),
-                  // _buildNotificationItem(
-                  //     context,
-                  //     'Your Order has been delivered',
-                  //     'Fruit Smoothie',
-                  //     'assets/smoothie.jpg',
-                  //     null,
-                  //     false),
-                  // _buildNotificationItem(
-                  //     context,
-                  //     'Your Order has been delivered',
-                  //     'Fruit Smoothie',
-                  //     'assets/smoothie.jpg',
-                  //     null,
-                  //     false),
-                ],
+                children: [],
               ),
             ),
           ],

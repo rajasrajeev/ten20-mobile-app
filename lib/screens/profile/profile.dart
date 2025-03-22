@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 
+import '../../utils/constants.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -101,10 +103,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: ListTile(
         leading: Icon(icon, color: Colors.black54),
-        title: Text(title),
+        title: Text(title,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
         trailing: const Icon(Icons.arrow_forward_ios, size: 14),
         onTap: () {
-          // Handle menu item tap
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              Future.delayed(const Duration(seconds: 1), () {
+                Navigator.of(context).pop();
+                showAlert(context,
+                    title: "Maintenance", message: "Something Went Wrong");
+              });
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          );
         },
       ),
     );

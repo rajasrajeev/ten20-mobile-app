@@ -121,19 +121,19 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
 
                 // Recent Transactions
-                Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: 8,
-                    itemBuilder: (context, index) {
-                      return _buildTransactionItem(
-                        '',
-                        '',
-                        '',
-                      );
-                    },
-                  ),
-                ),
+                // Expanded(
+                //   child: ListView.builder(
+                //     padding: const EdgeInsets.all(16),
+                //     itemCount: 8,
+                //     itemBuilder: (context, index) {
+                //       return _buildTransactionItem(
+                //         '',
+                //         '',
+                //         '',
+                //       );
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),
