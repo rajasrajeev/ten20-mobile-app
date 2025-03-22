@@ -56,25 +56,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
       actions: [
-        IconButton(
-          icon: showProfileImage
-              ? const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Text(
-                    "S",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                )
-              : const Text(
-                  "Profile",
-                  style: TextStyle(color: Colors.black),
-                ),
-          onPressed: () {
-            // setState(() {
-            //   showProfileImage = !showProfileImage;
-            // });
-          },
-        ),
+        // IconButton(
+        //   icon: showProfileImage
+        //       ? const CircleAvatar(
+        //           backgroundColor: Colors.white,
+        //           child: Text(
+        //             "S",
+        //             style: TextStyle(color: Colors.black),
+        //           ),
+        //         )
+        //       : const Text(
+        //           "Profile",
+        //           style: TextStyle(color: Colors.black),
+        //         ),
+        //   onPressed: () {
+        //     setState(() {
+        //       showProfileImage = !showProfileImage;
+        //     });
+        //   },
+        // ),
         const SizedBox(width: 16), // Spacing between icon and edge
       ],
     );

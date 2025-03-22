@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class AssistantCard extends StatelessWidget {
   final String imageUrl;
   final String title;
+  final String description;
 
-  const AssistantCard({super.key, required this.imageUrl, required this.title});
+  const AssistantCard(
+      {super.key,
+      required this.imageUrl,
+      required this.title,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {

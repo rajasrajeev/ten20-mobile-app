@@ -112,7 +112,8 @@ class _AssistantScreenState extends State<AssistantScreen> {
                       },
                       child: AssistantCard(
                           imageUrl: assistants[index].imageUrl,
-                          title: assistants[index].title));
+                          title: assistants[index].title,
+                          description: assistants[index].description));
                 },
               ))
             ],

@@ -53,7 +53,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
                       const SizedBox(height: 8),
                       const Text(
-                        '210.30',
+                        '0.00',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
@@ -127,9 +127,9 @@ class _WalletScreenState extends State<WalletScreen> {
                     itemCount: 8,
                     itemBuilder: (context, index) {
                       return _buildTransactionItem(
-                        'Fruit Smoothie',
-                        'QAR 25.00',
-                        'assets/smoothie.jpg',
+                        '',
+                        '',
+                        '',
                       );
                     },
                   ),

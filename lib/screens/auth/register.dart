@@ -239,7 +239,7 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
                         child: TextField(
                           controller: _controller3,
-                          obscureText: true, // This hides the text
+                          obscureText: false, // This hides the text
 
                           style: const TextStyle(
                             fontFamily: 'Sunflora', // Apply the custom font
@@ -295,7 +295,7 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
                         child: TextField(
                           controller: _controller4,
-                          obscureText: true,
+                          obscureText: _isHidden,
                           style: const TextStyle(
                             fontFamily: 'Sunflora', // Apply the custom font
                             fontSize: 18.0,
@@ -355,7 +355,7 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
                         child: TextField(
                           controller: _controller5,
-                          obscureText: true, // This hides the text
+                          obscureText: _isHidden2, // This hides the text
 
                           style: const TextStyle(
                             fontFamily: 'Sunflora', // Apply the custom font
