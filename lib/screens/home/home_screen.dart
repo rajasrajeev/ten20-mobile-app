@@ -64,9 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 12, bottom: 100),
+              padding: const EdgeInsets.only(left: 12),
               child: Text("Hello, $firstName",
-                  style: const TextStyle(color: Colors.black, fontSize: 20)),
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 131, 135, 100), fontSize: 15)),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 12, bottom: 50),
+              child: Text("#001",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 131, 135, 100), fontSize: 15)),
             ),
             Expanded(
               child: GridView.builder(
@@ -175,9 +182,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w300,
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
               ),

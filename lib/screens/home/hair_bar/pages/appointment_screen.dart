@@ -4,8 +4,10 @@ import 'package:intl/intl.dart';
 
 import 'package:ten20/components/custom_button.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
-import 'package:ten20/components/service_card.dart';
-import 'package:ten20/screens/home/hair_bar/pages/order_final_screen.dart';
+// import 'package:ten20/screens/home/hair_bar/pages/order_final_screen.dart';
+import 'package:ten20/screens/home/hair_bar/pages/payment_screen2.dart';
+// import 'package:ten20/components/service_card.dart';
+// import 'package:ten20/screens/home/hair_bar/page/order_final_screen.dart';
 import 'package:ten20/utils/api_service.dart';
 // import 'package:ten20/screens/home/nails_diner/page/payment_screen.dart';
 import 'package:ten20/utils/constants.dart';
@@ -13,18 +15,10 @@ import 'package:ten20/utils/constants.dart';
 class AppointmentScreen extends StatefulWidget {
   int id;
   int selectedServiceId;
-  String price;
-  String imageUrl;
-  String serviceName;
-  String assistantName;
   AppointmentScreen({
     super.key,
     required this.id,
-    required this.price,
     required this.selectedServiceId,
-    required this.imageUrl,
-    required this.serviceName,
-    required this.assistantName,
   });
 
   @override
@@ -137,7 +131,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               width: 60,
               margin: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
-                color: isSelected == i ? Colors.orange[100] : Colors.white,
+                color: isSelected == i ? kNailsDinerColor : Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: isSelected == i
                     ? Border.all(color: kNailsDinerColor)
@@ -148,14 +142,23 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 children: [
                   Text(
                     DateFormat.d().format(date),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "CeraPro",
+                        color: isSelected == i
+                            ? Colors.white
+                            : kDefaultBgTextColor),
                   ),
                   Text(
                     DateFormat.E().format(date).toUpperCase(),
-                    style: const TextStyle(fontSize: 12),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: "CeraPro",
+                        fontWeight: FontWeight.w400,
+                        color: isSelected == i
+                            ? Colors.white
+                            : kDefaultBgTextColor),
                   ),
                 ],
               ),
@@ -187,11 +190,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 ],
               ),
               const SizedBox(height: 10),
-              ServiceCard(
-                  imageUrl: widget.imageUrl,
-                  title: widget.serviceName,
-                  price: widget.price,
-                  description: "by ${widget.assistantName}"),
               const SizedBox(height: 10),
               Row(
                 children: <Widget>[
@@ -226,8 +224,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               ),
               Expanded(
                 child: SizedBox(
-                  height: 3 *
-                      30.0, // Adjust height based on your row height (60.0 is an example)
+                  // Adjust height based on your row height (e.g., 60.0 per row)
+                  height: 3 * 60.0,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -254,13 +252,13 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? kPilatesLoftColor
+                                ? kNailsDinerColor
                                 : isEnabled
                                     ? Colors.white
                                     : Colors.grey[200],
                             borderRadius: BorderRadius.circular(12),
                             border: isSelected
-                                ? Border.all(color: kPilatesLoftColor)
+                                ? Border.all(color: kNailsDinerColor)
                                 : isEnabled
                                     ? Border.all(color: Colors.white)
                                     : Border.all(color: Colors.grey[300]!),
@@ -268,10 +266,13 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           child: Text(
                             slot['time'],
                             style: TextStyle(
-                              color: isEnabled ? Colors.black : Colors.grey,
-                              fontWeight: isSelected
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
+                              fontFamily: "CeraPro",
+                              color: isEnabled
+                                  ? isSelected
+                                      ? kDefaultBgTextColor
+                                      : kDefaultBgTextColor
+                                  : Color.fromARGB(255, 88, 88, 88),
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
@@ -281,10 +282,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(40, 0, 0, 80),
-                margin: const EdgeInsets.only(left: 50, top: 10, bottom: 10),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 200),
+                margin: const EdgeInsets.only(
+                    left: 10, right: 10, top: 10, bottom: 10),
                 child: CustomButton(
-                  bgColor: const Color.fromARGB(255, 0, 10, 20),
+                  bgColor: kNailsDinerColor,
                   borderRadius: 50.0,
                   bgIconColor: Colors.white,
                   bgTextColor: Colors.white,
@@ -293,29 +295,30 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   vertical: 10.0,
                   horizontal: 5.0,
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (BuildContext context) {
-                        Future.delayed(const Duration(seconds: 2), () {
-                          Navigator.of(context).pop();
-                          showAlert(context,
-                              title: "Success",
-                              message: "Appointment Successful!!!");
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const OrderFinalScreen()));
-                        });
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                    );
+                    // showDialog(
+                    //   context: context,
+                    //   barrierDismissible: false,
+                    //   builder: (BuildContext context) {
+                    //     Future.delayed(const Duration(seconds: 2), () {
+                    //       Navigator.of(context).pop();
+                    //       showAlert(context,
+                    //           title: "Success",
+                    //           message: "Appointment Successful!!!");
+                    //       );
+                    //     });
+                    //     return const Center(
+                    //       child: CircularProgressIndicator(),
+                    //     );
+                    //   },
+                    // );
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PaymentScreen2Page(id: 1)));
                   },
                 ),
               )
             ],
           ),
         ),
-        title: "Nails Diner");
+        title: "Hair Bar");
   }
 }

@@ -11,7 +11,7 @@ class CustomBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20, left: 5, right: 5),
+      margin: const EdgeInsets.only(bottom: 30, left: 25, right: 25),
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white, // White background
@@ -70,6 +70,7 @@ class CustomBottomBar extends StatelessWidget {
         children: [
           Icon(
             icon,
+            size: 15,
             color: Colors.black,
           ),
           const SizedBox(height: 5),
@@ -77,7 +78,7 @@ class CustomBottomBar extends StatelessWidget {
             label,
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 12,
+              fontSize: 8,
             ),
           ),
         ],

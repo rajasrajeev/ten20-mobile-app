@@ -61,6 +61,26 @@ class JuiceBarPage extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(
+                  padding: const EdgeInsets.only(left: 5, right: 10, top: 5),
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/images/splash_screen_image.png',
+                          width: 100,
+                          height: 100,
+                        ),
+                        const Text(
+                          "Fuel your body, refresh your mind. Our in-studio juice bar offers a curated selection of cold-pressed juices, wellness shots, and nutrient-packed smoothies—perfect for a post-workout boost or a healthy treat any time. Each blend is crafted with fresh, seasonal ingredients to support your energy, hydration, and glow from the inside out.",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 131, 135, 100),
+                              fontSize: 10,
+                              fontFamily: 'CeraPro'),
+                        ),
+                      ],
+                    ),
+                  )),
               const SizedBox(height: 10),
               Expanded(
                 child: ListView.builder(

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 import 'package:ten20/components/service_card.dart';
 import 'package:ten20/model/service_item.dart';
-import 'package:ten20/screens/home/nails_diner/page/assistant_screen.dart';
+// import 'package:ten20/screens/home/nails_diner/page/assistant_screen.dart';
+import 'package:ten20/screens/home/nails_diner/page/sub_service2.dart';
 import 'package:ten20/utils/api_service.dart';
 import 'package:ten20/utils/constants.dart';
 
@@ -22,6 +23,7 @@ class _SubServicePageState extends State<SubServicePage> {
   final ApiService apiService = ApiService();
   final TextEditingController _controller = TextEditingController();
   List<ServiceItem> services = [];
+  int? isSelectedId;
 
   @override
   void initState() {
@@ -115,30 +117,51 @@ class _SubServicePageState extends State<SubServicePage> {
               ],
             ),
             const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
-              child: TextField(
-                controller: _controller,
-                // onChanged: fetchDataOnTextChange,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Color.fromRGBO(107, 119, 154, 1),
-                  ),
-                  hintText: 'Search here',
-                  hintStyle: const TextStyle(
+            SizedBox(
+              height: 50,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5, 5, 10, 0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: TextField(
+                    controller: _controller,
+                    onChanged: fetchDataOnTextChange,
+                    textAlignVertical:
+                        TextAlignVertical.center, // Ensures vertical centering
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        size: 15,
+                        color: Color.fromRGBO(107, 119, 154, 1),
+                      ),
+                      hintText: 'Search here',
+                      hintStyle: const TextStyle(
+                        color: Color.fromRGBO(107, 119, 154, 0.5),
+                        fontFamily: 'CeraPro',
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10), // Adjust as needed
+                    ),
+                    style: const TextStyle(
                       color: Color.fromRGBO(107, 119, 154, 0.5),
-                      fontFamily: 'CeraPro'),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(12.0),
+                    ),
                   ),
                 ),
-                style: const TextStyle(
-                  color: Color.fromRGBO(107, 119, 154, 0.5),
-                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Choose Your Service',
+              style: TextStyle(
+                fontSize: 16,
+                color: kDefaultBgTextColor,
+                fontFamily: 'CeraPro',
               ),
             ),
             const SizedBox(height: 10),
@@ -149,15 +172,18 @@ class _SubServicePageState extends State<SubServicePage> {
                   final service = services[index];
                   return GestureDetector(
                     onTap: () {
+                      setState(() {
+                        isSelectedId = service.id;
+                      });
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AssistantScreen(
+                          builder: (context) => SubService2Page(
                               id: widget.id,
-                              selectedService: service.id,
-                              price: service.price,
-                              image: service.imageUrl,
-                              title: service.title)));
+                              selectedServiceId: widget.selectedServiceId,
+                              selectedSubServiceId: service.id)));
                     },
                     child: ServiceCard(
+                      bgColor: kNailsDinerColor,
+                      isSelected: isSelectedId == service.id,
                       imageUrl: service.imageUrl,
                       title: service.title,
                       price: service.price,

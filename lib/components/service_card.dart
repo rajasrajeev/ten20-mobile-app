@@ -5,75 +5,104 @@ class ServiceCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String description;
-  final double height;
+  final String duration;
   final String price;
+  final Color bgColor;
+  final double height;
+  final bool isSelected;
 
-  const ServiceCard(
-      {super.key,
-      required this.imageUrl,
-      required this.title,
-      required this.description,
-      required this.price,
-      this.height = 110.0});
+  const ServiceCard({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    this.description =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    this.duration = "30 min",
+    required this.price,
+    this.height = 110.0,
+    this.bgColor = const Color(0xFFFFFFFF),
+    this.isSelected = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-      child: SizedBox(
-        height: height,
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: const Color.fromARGB(255, 255, 255, 255)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    imageUrl,
-                    width: 120.0,
-                    height: 70.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        title,
-                        style: contentHeader,
-                      ),
-                      const SizedBox(height: 2.0),
-                      Text(
-                        description,
-                        style: TextStyle(
-                            fontSize: 13.0,
-                            color: Colors.grey[600],
-                            fontFamily: 'CeraPro'),
-                      ),
-                      Text(
-                        "$price QR",
-                        style: const TextStyle(
-                            fontSize: 13.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontFamily: 'CeraPro'),
-                      )
-                    ],
-                  ),
-                ),
-                const Icon(Icons.arrow_forward_ios,
-                    color: Color.fromARGB(255, 0, 0, 0)),
-              ],
-            ),
+    return Container(
+      height: height,
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+      padding: const EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        color: isSelected ? bgColor : Color.fromARGB(255, 255, 255, 255),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Title
+          Text(
+            title,
+            style: isSelected
+                ? contentDescription2()
+                : contentDescription(color: kDefaultBgTextColor),
           ),
-        ),
+          const SizedBox(height: 8.0),
+
+          /// Row with image + description
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4.0),
+                child: Image.network(
+                  imageUrl,
+                  width: 60,
+                  height: 40,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 10.0),
+              Expanded(
+                child: Text(
+                  description,
+                  style: isSelected
+                      ? contentDescription2()
+                      : contentDescription(color: kDefaultBgTextColor),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          /// Footer row: Learn More, Duration, Price
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Learn More >",
+                style: isSelected
+                    ? contentDescription2()
+                    : contentDescription(color: kDefaultBgTextColor),
+              ),
+              Row(
+                children: [
+                  Text(
+                    duration,
+                    style: isSelected
+                        ? contentDescription2()
+                        : contentDescription(color: kDefaultBgTextColor),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Text(
+                    "$price QR",
+                    style: isSelected
+                        ? contentDescription2()
+                        : contentDescription(color: kDefaultBgTextColor),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

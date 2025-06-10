@@ -131,27 +131,47 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
               ),
             ),
             const SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                itemCount: services.length,
-                itemBuilder: (context, index) {
-                  final service = services[index];
-                  return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SubServicePage(
-                                id: widget.id, selectedServiceId: service.id)));
-                      },
-                      child: CategoryCard(
-                        title: service.title,
-                      ));
-                },
-              ),
-            )
+            Padding(
+                padding: const EdgeInsets.only(left: 5, right: 10, top: 5),
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/splash_screen_image.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                      const Text(
+                        "Welcome to our Pilates studio — a calm, empowering space where movement meets mindfulness. Personalized sessions, expert guidance, and a focus on strength from within.",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 131, 135, 100),
+                            fontSize: 10,
+                            fontFamily: 'CeraPro'),
+                      ),
+                    ],
+                  ),
+                )),
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: services.length,
+            //     itemBuilder: (context, index) {
+            //       final service = services[index];
+            //       return GestureDetector(
+            //           onTap: () {
+            //             // Navigator.of(context).push(MaterialPageRoute(
+            //             //     builder: (context) => SubServicePage(
+            //             //         id: widget.id, selectedServiceId: service.id)));
+            //           },
+            //           child: CategoryCard(
+            //             title: service.title,
+            //           ));
+            //     },
+            //   ),
+            // )
           ],
         ),
       ),
-      title: 'Pilates Loft',
+      title: 'Pilates Studio',
     );
   }
 }

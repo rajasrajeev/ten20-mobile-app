@@ -102,10 +102,6 @@ class _AssistantScreenState extends State<AssistantScreen> {
                             builder: (context) => AppointmentScreen(
                                   id: widget.id,
                                   selectedServiceId: widget.selectedService,
-                                  price: widget.price,
-                                  imageUrl: widget.image,
-                                  serviceName: widget.title,
-                                  assistantName: assistants[index].title,
                                 )));
                       },
                       child: AssistantCard(

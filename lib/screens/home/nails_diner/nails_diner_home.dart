@@ -20,6 +20,7 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
   final ApiService apiService = ApiService();
   final TextEditingController _controller = TextEditingController();
   List<CategoryItem> services = [];
+  int? selectedCategoryId;
 
   @override
   void initState() {
@@ -97,32 +98,67 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
               ],
             ),
             const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
-              child: TextField(
-                controller: _controller,
-                onChanged: fetchDataOnTextChange,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Color.fromRGBO(107, 119, 154, 1),
-                  ),
-                  hintText: 'Search here',
-                  hintStyle: const TextStyle(
+            SizedBox(
+              height: 50,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5, 5, 10, 0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: TextField(
+                    controller: _controller,
+                    onChanged: fetchDataOnTextChange,
+                    textAlignVertical:
+                        TextAlignVertical.center, // Ensures vertical centering
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        size: 15,
+                        color: Color.fromRGBO(107, 119, 154, 1),
+                      ),
+                      hintText: 'Search here',
+                      hintStyle: const TextStyle(
+                        color: Color.fromRGBO(107, 119, 154, 0.5),
+                        fontFamily: 'CeraPro',
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10), // Adjust as needed
+                    ),
+                    style: const TextStyle(
                       color: Color.fromRGBO(107, 119, 154, 0.5),
-                      fontFamily: 'CeraPro'),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(12.0),
+                    ),
                   ),
-                ),
-                style: const TextStyle(
-                  color: Color.fromRGBO(107, 119, 154, 0.5),
                 ),
               ),
             ),
+            Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/splash_screen_image.png',
+                        width: 75,
+                        height: 75,
+                      ),
+                      const Center(
+                        child: Text(
+                          "Welcome to Ten 20 Nails Diner where beauty meets comfort! Indulge in flawless nails while you relax, sip, and unwind in our cozy, chic space designed for self-care with a twist",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 131, 135, 100),
+                              fontSize: 10,
+                              fontFamily: 'CeraPro'),
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
@@ -131,12 +167,17 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
                   final service = services[index];
                   return GestureDetector(
                     onTap: () {
+                      setState(() {
+                        selectedCategoryId = service.id;
+                      });
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => SubServicePage(
                               id: widget.id, selectedServiceId: service.id)));
                     },
                     child: CategoryCard(
                       title: service.title,
+                      bgColor: kNailsDinerColor,
+                      isSelected: selectedCategoryId == service.id,
                     ),
                   );
                 },

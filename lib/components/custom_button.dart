@@ -49,7 +49,7 @@ class CustomButton extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontFamily: 'Sunflora', // Use the custom font
+                fontFamily: 'CeraPro', // Use the custom font
                 fontSize: 18.0,
                 color: bgTextColor, // Text color
               ),

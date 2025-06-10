@@ -4,21 +4,32 @@ import 'package:ten20/utils/constants.dart';
 class CategoryCard extends StatelessWidget {
   final String title;
   final double height;
+  final Color bgColor;
+  final bool isSelected;
 
-  const CategoryCard({super.key, required this.title, this.height = 50});
+  const CategoryCard(
+      {super.key,
+      required this.title,
+      this.height = 50,
+      this.bgColor = const Color.fromARGB(255, 255, 255, 255),
+      this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+      padding: isSelected
+          ? const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0)
+          : const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
       child: SizedBox(
         height: height,
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: const Color.fromARGB(255, 255, 255, 255)),
+              color: isSelected
+                  ? bgColor
+                  : const Color.fromARGB(255, 255, 255, 255)),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
                 Expanded(
@@ -28,14 +39,17 @@ class CategoryCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: contentHeader,
+                        style: isSelected ? contentHeader2 : contentHeader,
                       ),
                       const SizedBox(height: 2.0),
                     ],
                   ),
                 ),
-                const Icon(Icons.arrow_forward_ios,
-                    color: Color.fromARGB(255, 0, 0, 0)),
+                Icon(Icons.arrow_forward_ios,
+                    size: isSelected ? 16 : 12.0,
+                    color: isSelected
+                        ? const Color.fromARGB(255, 255, 255, 255)
+                        : const Color.fromARGB(255, 0, 0, 0)),
               ],
             ),
           ),

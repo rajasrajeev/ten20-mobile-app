@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_button.dart';
 import 'package:ten20/screens/auth/register.dart';
+import 'package:ten20/screens/auth/login.dart';
 import 'package:ten20/utils/constants.dart';
 
 class SplashContinue extends StatefulWidget {
@@ -88,7 +89,33 @@ class _SplashContinueState extends State<SplashContinue> {
                   } else {}
                 },
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'Have an account? ',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 117, 117, 117)),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Login()));
+                    },
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                          fontSize: 18, color: Color.fromARGB(255, 0, 70, 67)),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),

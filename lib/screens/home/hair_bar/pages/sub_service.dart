@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 import 'package:ten20/components/service_card.dart';
 import 'package:ten20/model/service_item.dart';
-import 'package:ten20/screens/home/hair_bar/pages/assistant_screen.dart';
+// import 'package:ten20/screens/home/hair_bar/pages/assistant_screen.dart';
+import 'package:ten20/screens/home/hair_bar/pages/sub_service2.dart';
 import 'package:ten20/utils/api_service.dart';
 import 'package:ten20/utils/constants.dart';
 
@@ -22,6 +23,7 @@ class _SubServicePageState extends State<SubServicePage> {
   final ApiService apiService = ApiService();
   final TextEditingController _controller = TextEditingController();
   List<ServiceItem> services = [];
+  int? isSelectedId;
 
   @override
   void initState() {
@@ -149,19 +151,24 @@ class _SubServicePageState extends State<SubServicePage> {
                   final service = services[index];
                   return GestureDetector(
                     onTap: () {
+                      setState(() {
+                        isSelectedId = service.id;
+                      });
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AssistantScreen(
-                              id: widget.id,
-                              selectedService: service.id,
-                              price: service.price,
-                              image: service.imageUrl,
-                              title: service.title)));
+                          builder: (context) => SubService2Page(
+                                id: widget.id,
+                                // title: service.title,
+                                selectedServiceId: widget.selectedServiceId,
+                                selectedSubServiceId: service.id,
+                              )));
                     },
                     child: ServiceCard(
                       imageUrl: service.imageUrl,
                       title: service.title,
                       price: service.price,
                       description: service.description,
+                      bgColor: kHairBarColor,
+                      isSelected: isSelectedId == service.id,
                     ),
                   );
                 },

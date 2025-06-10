@@ -11,10 +11,11 @@ const String imageUrl = "https://ten20socialclub.connecti-fy.com/";
 //     "https://ac4f-2406-8800-81-b3a6-c7ca-a956-5d61-5436.ngrok-free.app/ten20/";
 
 // Define color constants
-const Color kNailsDinerColor = Color.fromARGB(255, 217, 184, 216);
-const Color kHairBarColor = Color.fromARGB(255, 247, 197, 182);
-const Color kJuiceBarColor = Color.fromARGB(255, 174, 203, 231);
-const Color kPilatesLoftColor = Color.fromARGB(255, 208, 224, 211);
+const Color kNailsDinerColor = Color.fromARGB(255, 214, 188, 216);
+const Color kHairBarColor = Color.fromARGB(255, 239, 215, 214);
+const Color kJuiceBarColor = Color.fromARGB(255, 168, 207, 227);
+const Color kPilatesLoftColor = Color.fromARGB(255, 182, 188, 148);
+const Color kDefaultBgTextColor = Color.fromARGB(255, 162, 167, 123);
 
 // bg color
 
@@ -25,6 +26,30 @@ const TextStyle contentHeader = TextStyle(
     fontFamily: 'CeraPro',
     fontSize: 18,
     fontWeight: FontWeight.w800);
+const TextStyle contentHeader2 = TextStyle(
+    color: Colors.white,
+    fontFamily: 'CeraPro',
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.00000001);
+
+TextStyle contentDescription({Color color = Colors.white}) {
+  return TextStyle(
+      color: color,
+      fontFamily: 'CeraPro',
+      fontSize: 10,
+      fontWeight: FontWeight.w800);
+}
+
+TextStyle contentDescription2({Color color = Colors.white}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'CeraPro',
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.00000001,
+  );
+}
 // Define padding/margin constants
 
 // Function to show an alert dialog
