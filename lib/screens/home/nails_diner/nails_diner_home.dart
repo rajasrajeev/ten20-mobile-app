@@ -120,7 +120,7 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
                       hintText: 'Search here',
                       hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5),
-                        fontFamily: 'CeraPro',
+                        fontFamily: 'Aromatica',
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -153,7 +153,7 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
                           style: TextStyle(
                               color: Color.fromARGB(255, 131, 135, 100),
                               fontSize: 10,
-                              fontFamily: 'CeraPro'),
+                              fontFamily: 'Aromatica'),
                         ),
                       ),
                     ],

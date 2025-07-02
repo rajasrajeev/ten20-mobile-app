@@ -46,7 +46,7 @@ class AssistantScreen extends StatelessWidget {
                     hintText: 'Search here',
                     hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5), // Text color
-                        fontFamily: 'CeraPro'),
+                        fontFamily: 'Aromatica'),
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none, // Default border color
                       borderRadius:

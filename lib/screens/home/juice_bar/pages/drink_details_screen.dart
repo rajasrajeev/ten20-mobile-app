@@ -21,13 +21,13 @@ class DrinkDetailsScreen extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: const Text('Smoothie',
-                          style: TextStyle(fontFamily: 'CeraPro'))),
+                          style: TextStyle(fontFamily: 'Aromatica'))),
                   const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black,
                   ),
                   const Text('Fruit Smoothie',
-                      style: TextStyle(fontFamily: 'CeraPro'))
+                      style: TextStyle(fontFamily: 'Aromatica'))
                 ],
               ),
               const SizedBox(height: 10),

@@ -49,7 +49,7 @@ class JuiceBarPage extends StatelessWidget {
                     hintText: 'Search here',
                     hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5), // Text color
-                        fontFamily: 'CeraPro'),
+                        fontFamily: 'Aromatica'),
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none, // Default border color
                       borderRadius:
@@ -76,7 +76,7 @@ class JuiceBarPage extends StatelessWidget {
                           style: TextStyle(
                               color: Color.fromARGB(255, 131, 135, 100),
                               fontSize: 10,
-                              fontFamily: 'CeraPro'),
+                              fontFamily: 'Aromatica'),
                         ),
                       ],
                     ),

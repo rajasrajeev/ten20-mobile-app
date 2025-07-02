@@ -143,7 +143,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
-                        fontFamily: "CeraPro",
+                        fontFamily: "Aromatica",
                         color: isSelected == i
                             ? Colors.white
                             : kDefaultBgTextColor),
@@ -152,7 +152,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     DateFormat.E().format(date).toUpperCase(),
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: "CeraPro",
+                        fontFamily: "Aromatica",
                         fontWeight: FontWeight.w400,
                         color: isSelected == i
                             ? Colors.white
@@ -264,7 +264,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           child: Text(
                             slot['time'],
                             style: TextStyle(
-                              fontFamily: "CeraPro",
+                              fontFamily: "Aromatica",
                               color: isEnabled
                                   ? isSelected
                                       ? kDefaultBgTextColor

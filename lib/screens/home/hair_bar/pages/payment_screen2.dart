@@ -149,7 +149,7 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
                       hintText: 'Search here',
                       hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5),
-                        fontFamily: 'CeraPro',
+                        fontFamily: 'Aromatica',
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -171,7 +171,7 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
               style: TextStyle(
                 fontSize: 16,
                 color: kDefaultBgTextColor,
-                fontFamily: 'CeraPro',
+                fontFamily: 'Aromatica',
               ),
             ),
             const SizedBox(height: 10),
@@ -211,7 +211,7 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
                       Text("Wallet",
                           style: TextStyle(
                               color: kDefaultBgTextColor,
-                              fontFamily: "CeraPro",
+                              fontFamily: "Aromatica",
                               fontWeight: FontWeight.w300,
                               fontSize: 25)),
                       // Padding(
@@ -221,14 +221,14 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
                       //       Text("30 Mins",
                       //           style: TextStyle(
                       //               color: kDefaultBgTextColor,
-                      //               fontFamily: "CeraPro",
+                      //               fontFamily: "Aromatica",
                       //               fontWeight: FontWeight.w300,
                       //               fontSize: 17)),
                       //       SizedBox(width: 10),
                       //       Text("40 QR",
                       //           style: TextStyle(
                       //               color: kDefaultBgTextColor,
-                      //               fontFamily: "CeraPro",
+                      //               fontFamily: "Aromatica",
                       //               fontWeight: FontWeight.w300,
                       //               fontSize: 17)),
                       //     ],
@@ -276,7 +276,7 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
                       Text("Other",
                           style: TextStyle(
                               color: kDefaultBgTextColor,
-                              fontFamily: "CeraPro",
+                              fontFamily: "Aromatica",
                               fontWeight: FontWeight.w300,
                               fontSize: 25)),
                       // Padding(
@@ -286,14 +286,14 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
                       //       Text("30 Mins",
                       //           style: TextStyle(
                       //               color: kDefaultBgTextColor,
-                      //               fontFamily: "CeraPro",
+                      //               fontFamily: "Aromatica",
                       //               fontWeight: FontWeight.w300,
                       //               fontSize: 17)),
                       //       SizedBox(width: 10),
                       //       Text("40 QR",
                       //           style: TextStyle(
                       //               color: kDefaultBgTextColor,
-                      //               fontFamily: "CeraPro",
+                      //               fontFamily: "Aromatica",
                       //               fontWeight: FontWeight.w300,
                       //               fontSize: 17)),
                       //     ],
@@ -307,7 +307,7 @@ class _PaymentScreen2PageState extends State<PaymentScreen2Page> {
           ],
         ),
       ),
-      title: 'Nails Diner',
+      title: 'Hair Bar',
     );
   }
 }

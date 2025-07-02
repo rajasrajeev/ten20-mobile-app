@@ -121,7 +121,7 @@ class _SubService2PageState extends State<SubService2Page> {
                     color: Colors.black,
                   ),
                 ),
-                const Text('Select Service', style: contentHeader),
+                const Text('Select Sub Service', style: contentHeader),
               ],
             ),
             const SizedBox(height: 10),
@@ -147,7 +147,7 @@ class _SubService2PageState extends State<SubService2Page> {
                       hintText: 'Search here',
                       hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5),
-                        fontFamily: 'CeraPro',
+                        fontFamily: 'Aromatica',
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -169,7 +169,7 @@ class _SubService2PageState extends State<SubService2Page> {
               style: TextStyle(
                 fontSize: 16,
                 color: kDefaultBgTextColor,
-                fontFamily: 'CeraPro',
+                fontFamily: 'Aromatica',
               ),
             ),
             const SizedBox(height: 10),
@@ -197,7 +197,7 @@ class _SubService2PageState extends State<SubService2Page> {
                       Text("YES",
                           style: TextStyle(
                               color: kDefaultBgTextColor,
-                              fontFamily: "CeraPro",
+                              fontFamily: "Aromatica",
                               fontWeight: FontWeight.w300,
                               fontSize: 25)),
                       Padding(
@@ -207,14 +207,14 @@ class _SubService2PageState extends State<SubService2Page> {
                             Text("30 Mins",
                                 style: TextStyle(
                                     color: kDefaultBgTextColor,
-                                    fontFamily: "CeraPro",
+                                    fontFamily: "Aromatica",
                                     fontWeight: FontWeight.w300,
                                     fontSize: 17)),
                             SizedBox(width: 10),
                             Text("40 QR",
                                 style: TextStyle(
                                     color: kDefaultBgTextColor,
-                                    fontFamily: "CeraPro",
+                                    fontFamily: "Aromatica",
                                     fontWeight: FontWeight.w300,
                                     fontSize: 17)),
                           ],
@@ -250,7 +250,7 @@ class _SubService2PageState extends State<SubService2Page> {
                       Text("No",
                           style: TextStyle(
                               color: kDefaultBgTextColor,
-                              fontFamily: "CeraPro",
+                              fontFamily: "Aromatica",
                               fontWeight: FontWeight.w300,
                               fontSize: 25)),
                       Padding(
@@ -260,14 +260,14 @@ class _SubService2PageState extends State<SubService2Page> {
                             Text("30 Mins",
                                 style: TextStyle(
                                     color: kDefaultBgTextColor,
-                                    fontFamily: "CeraPro",
+                                    fontFamily: "Aromatica",
                                     fontWeight: FontWeight.w300,
                                     fontSize: 17)),
                             SizedBox(width: 10),
                             Text("40 QR",
                                 style: TextStyle(
                                     color: kDefaultBgTextColor,
-                                    fontFamily: "CeraPro",
+                                    fontFamily: "Aromatica",
                                     fontWeight: FontWeight.w300,
                                     fontSize: 17)),
                           ],

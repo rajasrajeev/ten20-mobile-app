@@ -23,20 +23,31 @@ const Color mainBgColor = Color.fromARGB(255, 251, 240, 236);
 
 const TextStyle contentHeader = TextStyle(
     color: Colors.black,
-    fontFamily: 'CeraPro',
-    fontSize: 18,
+    fontFamily: 'Aromatica',
+    fontSize: 16,
     fontWeight: FontWeight.w800);
 const TextStyle contentHeader2 = TextStyle(
     color: Colors.white,
-    fontFamily: 'CeraPro',
+    fontFamily: 'Aromatica',
     fontSize: 15,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.00000001);
+const TextStyle contentHeader3 = TextStyle(
+    color: Color.fromARGB(159, 0, 0, 0),
+    fontFamily: 'Aromatica',
+    fontSize: 13,
+    fontWeight: FontWeight.w800);
+const TextStyle contentHeader4 = TextStyle(
+    color: Colors.white,
+    fontFamily: 'Aromatica',
+    fontSize: 13,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.00000001);
 
 TextStyle contentDescription({Color color = Colors.white}) {
   return TextStyle(
       color: color,
-      fontFamily: 'CeraPro',
+      fontFamily: 'Aromatica',
       fontSize: 10,
       fontWeight: FontWeight.w800);
 }
@@ -44,7 +55,7 @@ TextStyle contentDescription({Color color = Colors.white}) {
 TextStyle contentDescription2({Color color = Colors.white}) {
   return TextStyle(
     color: color,
-    fontFamily: 'CeraPro',
+    fontFamily: 'Aromatica',
     fontSize: 10,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.00000001,

@@ -64,8 +64,7 @@ class _HairBarPageState extends State<HairBarPage> {
   void fetchDataOnTextChange(String changeValue) async {
     try {
       if (changeValue.isNotEmpty) {
-        var result =
-            await apiService.get_sub_services_s(widget.id, changeValue);
+        var result = await apiService.get_categories(widget.id, changeValue);
 
         if (result.isNotEmpty) {
           List<CategoryItem> serviceItems = result.map<CategoryItem>((data) {

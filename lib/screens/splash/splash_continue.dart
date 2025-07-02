@@ -38,14 +38,14 @@ class _SplashContinueState extends State<SplashContinue> {
               child: TextField(
                 controller: _controller,
                 style: const TextStyle(
-                  fontFamily: 'Sunflora', // Apply the custom font
+                  fontFamily: 'Aromatica', // Apply the custom font
                   fontSize: 18.0,
                   color: Colors.black, // Text color
                 ),
                 decoration: InputDecoration(
                   hintText: 'Name here',
                   hintStyle: const TextStyle(
-                    fontFamily: 'Sunflora',
+                    fontFamily: 'Aromatica',
                     fontSize: 18.0,
                   ),
                   enabledBorder: OutlineInputBorder(

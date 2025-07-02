@@ -108,14 +108,14 @@ class _LoginState extends State<Login> {
               child: TextField(
                 controller: _controller,
                 style: const TextStyle(
-                  fontFamily: 'Sunflora', // Apply the custom font
+                  fontFamily: 'Aromatica', // Apply the custom font
                   fontSize: 18.0,
                   color: Colors.black, // Text color
                 ),
                 decoration: InputDecoration(
                   hintText: 'Email here',
                   hintStyle: const TextStyle(
-                    fontFamily: 'Sunflora',
+                    fontFamily: 'Aromatica',
                     fontSize: 18.0,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
                 obscureText: _isHidden ? true : false, // This hides the text
 
                 style: const TextStyle(
-                  fontFamily: 'Sunflora', // Apply the custom font
+                  fontFamily: 'Aromatica', // Apply the custom font
                   fontSize: 18.0,
                   color: Colors.black, // Text color
                 ),
@@ -173,7 +173,7 @@ class _LoginState extends State<Login> {
                   ),
                   hintText: 'Password here',
                   hintStyle: const TextStyle(
-                    fontFamily: 'Sunflora',
+                    fontFamily: 'Aromatica',
                     fontSize: 18.0,
                   ),
                   enabledBorder: OutlineInputBorder(

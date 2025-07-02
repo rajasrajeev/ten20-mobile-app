@@ -39,7 +39,7 @@ class CategoryCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: isSelected ? contentHeader2 : contentHeader,
+                        style: isSelected ? contentHeader4 : contentHeader3,
                       ),
                       const SizedBox(height: 2.0),
                     ],

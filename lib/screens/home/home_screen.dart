@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       : service['name'] == "Hair Bar"
                           ? "Hair\n Bar"
                           : service['name'] == "Pilates Loft"
-                              ? "Pilates\n Loft"
+                              ? "Pilates\n Studio"
                               : "Juice Bar");
                   String image = (service['name'] == "Nails Diner"
                       ? "assets/icons/nails_diner.png"

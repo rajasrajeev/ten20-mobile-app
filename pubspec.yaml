@@ -25,7 +25,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/splash_screen_image.png" # Updated to point to your app icon image
+  image_path: "assets/images/app_logo.jpg" # Updated to point to your app icon image
 
 flutter:
   uses-material-design: true
@@ -44,6 +44,12 @@ flutter:
     # - assets/images/splash_screen_image@3x.png
 
   fonts:
+    - family: Aromatica
+      fonts:
+        - asset: assets/fonts/aromatica-regular.ttf
+    - family: Aromatica-Bold
+      fonts:
+        - asset: assets/fonts/aromatica-bold.ttf
     - family: Sunflora
       fonts:
         - asset: assets/fonts/Sunflora-Regular.ttf

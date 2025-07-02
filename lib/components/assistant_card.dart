@@ -36,7 +36,7 @@ class AssistantCard extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'CeraPro'),
+                fontFamily: 'Aromatica'),
           ),
         ],
       ),

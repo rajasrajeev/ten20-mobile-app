@@ -139,7 +139,7 @@ class _SubServicePageState extends State<SubServicePage> {
                       hintText: 'Search here',
                       hintStyle: const TextStyle(
                         color: Color.fromRGBO(107, 119, 154, 0.5),
-                        fontFamily: 'CeraPro',
+                        fontFamily: 'Aromatica',
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -161,7 +161,7 @@ class _SubServicePageState extends State<SubServicePage> {
               style: TextStyle(
                 fontSize: 16,
                 color: kDefaultBgTextColor,
-                fontFamily: 'CeraPro',
+                fontFamily: 'Aromatica',
               ),
             ),
             const SizedBox(height: 10),

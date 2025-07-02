@@ -140,14 +140,14 @@ class _RegisterState extends State<Register> {
                         child: TextField(
                           controller: _controller,
                           style: const TextStyle(
-                            fontFamily: 'Sunflora', // Apply the custom font
+                            fontFamily: 'Aromatica', // Apply the custom font
                             fontSize: 18.0,
                             color: Colors.black, // Text color
                           ),
                           decoration: InputDecoration(
                             hintText: 'Name here',
                             hintStyle: const TextStyle(
-                              fontFamily: 'Sunflora',
+                              fontFamily: 'Aromatica',
                               fontSize: 18.0,
                             ),
                             enabledBorder: OutlineInputBorder(
@@ -191,14 +191,14 @@ class _RegisterState extends State<Register> {
                           // obscureText: true, // This hides the text
 
                           style: const TextStyle(
-                            fontFamily: 'Sunflora', // Apply the custom font
+                            fontFamily: 'Aromatica', // Apply the custom font
                             fontSize: 18.0,
                             color: Colors.black, // Text color
                           ),
                           decoration: InputDecoration(
                             hintText: '',
                             hintStyle: const TextStyle(
-                              fontFamily: 'Sunflora',
+                              fontFamily: 'Aromatica',
                               fontSize: 18.0,
                             ),
                             enabledBorder: OutlineInputBorder(
@@ -242,14 +242,14 @@ class _RegisterState extends State<Register> {
                           obscureText: false, // This hides the text
 
                           style: const TextStyle(
-                            fontFamily: 'Sunflora', // Apply the custom font
+                            fontFamily: 'Aromatica', // Apply the custom font
                             fontSize: 18.0,
                             color: Colors.black, // Text color
                           ),
                           decoration: InputDecoration(
                             hintText: '',
                             hintStyle: const TextStyle(
-                              fontFamily: 'Sunflora',
+                              fontFamily: 'Aromatica',
                               fontSize: 18.0,
                             ),
                             enabledBorder: OutlineInputBorder(
@@ -297,7 +297,7 @@ class _RegisterState extends State<Register> {
                           controller: _controller4,
                           obscureText: _isHidden,
                           style: const TextStyle(
-                            fontFamily: 'Sunflora', // Apply the custom font
+                            fontFamily: 'Aromatica', // Apply the custom font
                             fontSize: 18.0,
                             color: Colors.black, // Text color
                           ),
@@ -314,7 +314,7 @@ class _RegisterState extends State<Register> {
                             ),
                             hintText: '',
                             hintStyle: const TextStyle(
-                              fontFamily: 'Sunflora',
+                              fontFamily: 'Aromatica',
                               fontSize: 18.0,
                             ),
                             enabledBorder: OutlineInputBorder(
@@ -358,7 +358,7 @@ class _RegisterState extends State<Register> {
                           obscureText: _isHidden2, // This hides the text
 
                           style: const TextStyle(
-                            fontFamily: 'Sunflora', // Apply the custom font
+                            fontFamily: 'Aromatica', // Apply the custom font
                             fontSize: 18.0,
                             color: Colors.black, // Text color
                           ),
@@ -375,7 +375,7 @@ class _RegisterState extends State<Register> {
                             ),
                             hintText: '',
                             hintStyle: const TextStyle(
-                              fontFamily: 'Sunflora',
+                              fontFamily: 'Aromatica',
                               fontSize: 18.0,
                             ),
                             enabledBorder: OutlineInputBorder(
