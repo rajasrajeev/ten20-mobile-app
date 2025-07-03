@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 // import 'package:ten20/components/service_card.dart';
 import 'package:ten20/model/service_item.dart';
-import 'package:ten20/screens/home/pilates_loft/pages/assistant_screen.dart';
+import 'package:ten20/screens/home/pilates_loft/pages/order_final_screen.dart';
+import 'package:ten20/screens/wallet/wallet.dart';
+// import 'package:ten20/screens/home/pilates_loft/pages/assistant_screen.dart';
 import 'package:ten20/utils/api_service.dart';
 import 'package:ten20/utils/constants.dart';
 
@@ -91,6 +93,312 @@ class _SubServicePageState extends State<SubServicePage> {
     } catch (e) {
       print("Error fetching data: $e");
     }
+  }
+
+  void _showInstructorProfile(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFFF5F5F5),
+                  Color(0xFFE8E8E8),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Close button
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFB7B89F),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Profile image
+                Container(
+                  width: 120,
+                  height: 160,
+                  margin: const EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        services[0].imageUrl, // Replace with actual image URL
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                // Name
+                const Text(
+                  'Paria Sadat',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF6B799A),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                // Title
+                const Text(
+                  'Pilates Instructor',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF6B799A),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Description
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    '"Welcome to our boutique Pilates studio – a calm, empowering space where movement meets mindfulness. Personalized sessions, expert guidance, and a focus on strength from within."',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[700],
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                // Bottom indicator dots
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      width: 8,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      width: 8,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPaymentMethodPopup(BuildContext context, String price) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFFB7B89F),
+                Color(0xFFA8A98A),
+              ],
+            ),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Handle bar
+                Container(
+                  width: 50,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Header
+                const Column(
+                  children: [
+                    Text(
+                      'Payment Method',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'TEN 20 Pilates',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                // Payment options
+                Row(
+                  children: [
+                    // Wallet option
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          // Handle wallet payment
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const WalletScreen(),
+                            ),
+                          );
+                          // Add your wallet payment logic here
+                        },
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Wallet',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF6B799A),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    // Add Funds option
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          // Handle add funds
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const WalletScreen(),
+                            ),
+                          );
+                          // Add your add funds logic here
+                        },
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Add Funds',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF6B799A),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 25),
+                // Book Slot Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white.withOpacity(0.9),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      // Handle book slot
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const OrderFinalScreen(),
+                        ),
+                      );
+                      // Add your booking logic here
+                    },
+                    child: Text(
+                      'Book Slot - $price QR',
+                      style: const TextStyle(
+                        color: Color(0xFF6B799A),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -267,7 +575,9 @@ class _SubServicePageState extends State<SubServicePage> {
                                 ),
                                 const Spacer(),
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _showInstructorProfile(context);
+                                  },
                                   child: const Text(
                                     "View Profile",
                                     style: TextStyle(
@@ -311,6 +621,8 @@ class _SubServicePageState extends State<SubServicePage> {
                                     const EdgeInsets.symmetric(vertical: 16),
                               ),
                               onPressed: () {
+                                _showPaymentMethodPopup(
+                                    context, services[0].price);
                                 // Navigator.of(context).push(MaterialPageRoute(
                                 //   builder: (context) => AssistantScreen(
                                 //     id: widget.id,
@@ -331,6 +643,7 @@ class _SubServicePageState extends State<SubServicePage> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 70),
                         ],
                       ),
                     ),

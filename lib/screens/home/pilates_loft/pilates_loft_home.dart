@@ -92,7 +92,7 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
 
   void scrollToSelectedDate() {
     // Each date container is 60 pixels wide with 10 pixels spacing (5+5 margin)
-    double position = (selectedDate.day - 1) * 70.0;
+    double position = (selectedDate.day - 1) * 56.0;
     _scrollController.animateTo(
       position,
       duration: const Duration(milliseconds: 500),
@@ -118,8 +118,9 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
             });
           },
           child: Container(
-            width: 60,
-            margin: const EdgeInsets.symmetric(horizontal: 5),
+            width: 50,
+            // height: 20,
+            margin: const EdgeInsets.symmetric(horizontal: 3),
             decoration: BoxDecoration(
               color: isSelected == i
                   ? const Color.fromARGB(255, 162, 167, 123)
@@ -135,7 +136,7 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
                 Text(
                   DateFormat.d().format(date),
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: isSelected == i
                         ? Colors.white
@@ -185,40 +186,43 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
             const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
-              child: TextField(
-                controller: _controller,
-                onChanged: fetchDataOnTextChange,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Color.fromRGBO(107, 119, 154, 1),
+              child: Container(
+                height: 45,
+                child: TextField(
+                  controller: _controller,
+                  onChanged: fetchDataOnTextChange,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Color.fromRGBO(107, 119, 154, 1),
+                    ),
+                    hintText: 'Search here',
+                    hintStyle: const TextStyle(
+                        color: Color.fromRGBO(107, 119, 154, 0.5),
+                        fontFamily: 'Aromatica'),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
                   ),
-                  hintText: 'Search here',
-                  hintStyle: const TextStyle(
-                      color: Color.fromRGBO(107, 119, 154, 0.5),
-                      fontFamily: 'Aromatica'),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(12.0),
+                  style: const TextStyle(
+                    color: Color.fromRGBO(107, 119, 154, 0.5),
                   ),
-                ),
-                style: const TextStyle(
-                  color: Color.fromRGBO(107, 119, 154, 0.5),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             Padding(
-                padding: const EdgeInsets.only(left: 5, right: 10, top: 5),
+                padding: const EdgeInsets.only(left: 5, right: 10, top: 0),
                 child: Center(
                   child: Column(
                     children: <Widget>[
                       Image.asset(
                         'assets/images/splash_screen_image.png',
-                        width: 100,
-                        height: 100,
+                        width: 90,
+                        height: 90,
                       ),
                       const Text(
                         "Welcome to our Pilates studio — a calm, empowering space where movement meets mindfulness. Personalized sessions, expert guidance, and a focus on strength from within.",
@@ -233,7 +237,7 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
             const SizedBox(height: 10),
             Container(
               padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
-              height: 80,
+              height: 70,
               child: ListView(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
@@ -262,7 +266,8 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
                       ));
                 },
               ),
-            )
+            ),
+            const SizedBox(height: 80),
           ],
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
+import 'package:ten20/screens/wallet/membership_details_screen.dart';
+import 'package:ten20/utils/constants.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -17,247 +19,493 @@ class _WalletScreenState extends State<WalletScreen> {
     });
   }
 
+  void _showPaymentSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => _buildPaymentSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomLayout(
-      title: "Wallet",
+      title: "",
       body: Stack(
         children: [
           SafeArea(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // My Wallet
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    "My Wallet",
+                    style: TextStyle(
+                      color: Color(0xFFB6BC9B),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
                 // Balance Card
                 Container(
-                  margin: const EdgeInsets.all(16),
-                  padding: const EdgeInsets.all(20),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.deepPurple[400]!,
-                        Colors.deepPurple[700]!
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      const BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 6,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Available Balance',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 14,
-                        ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Current Balance',
+                            style: TextStyle(
+                              color: Color(0xFFB6BC9B),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 6),
+                          Text(
+                            '50.00 QAR',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        '0.00',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: _toggleAddAmountModal,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
+                          backgroundColor: const Color(0xFFB6BC9B),
                           foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 22, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
+                          elevation: 0,
                         ),
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('ADD AMOUNT'),
-                            SizedBox(width: 4),
-                            Icon(Icons.add, size: 16),
-                          ],
-                        ),
+                        child: const Text('+ Add Funds'),
                       ),
                     ],
                   ),
                 ),
-
-                // Quick Actions
+                // Membership Plan
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  child: Text(
+                    "Membership Plan",
+                    style: TextStyle(
+                      color: Color(0xFFB6BC9B),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                // Membership Plan Buttons
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: Column(
                     children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: const Text('SEND MONEY'),
-                        ),
+                      _membershipButton(
+                        "SAGE MEMBERSHIP PLAN",
+                        const Color(0xFFB6BC9B),
+                        Colors.white,
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: Colors.grey[800],
-                            side: const BorderSide(color: Colors.grey),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: const Text('CHECK HISTORY'),
-                        ),
+                      const SizedBox(height: 12),
+                      _membershipButton(
+                        "PINK MEMBERSHIP PLAN",
+                        const Color(0xFFEAD3D3),
+                        Colors.white,
+                      ),
+                      const SizedBox(height: 12),
+                      _membershipButton(
+                        "CREAM MEMBERSHIP PLAN",
+                        const Color(0xFFE3DBD3),
+                        Colors.white,
                       ),
                     ],
                   ),
                 ),
-
-                // Recent Transactions
-                // Expanded(
-                //   child: ListView.builder(
-                //     padding: const EdgeInsets.all(16),
-                //     itemCount: 8,
-                //     itemBuilder: (context, index) {
-                //       return _buildTransactionItem(
-                //         '',
-                //         '',
-                //         '',
-                //       );
-                //     },
-                //   ),
-                // ),
+                const Spacer(),
               ],
             ),
           ),
-
-          // Add Amount Modal
           if (_showAddAmountModal) _buildAddAmountModal(),
         ],
+      ),
+      // backgroundColor: const Color(0xFFF8EFEA),
+    );
+  }
+
+  Widget _membershipButton(String text, Color bgColor, Color textColor) {
+    return SizedBox(
+      width: double.infinity,
+      height: 70,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MembershipDetailsScreen(
+                membershipTitle: text,
+                membershipColor: bgColor,
+                price: text == "SAGE MEMBERSHIP PLAN"
+                    ? "3000 QR"
+                    : text == "PINK MEMBERSHIP PLAN"
+                        ? "2000 QR"
+                        : "1000 QR",
+              ),
+            ),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: bgColor,
+          foregroundColor: textColor,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: textColor,
+            letterSpacing: 1,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomNavItem(IconData icon, bool selected) {
+    return Container(
+      decoration: selected
+          ? BoxDecoration(
+              color: const Color(0xFFF8EFEA),
+              borderRadius: BorderRadius.circular(16),
+            )
+          : null,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      child: Icon(
+        icon,
+        color: selected ? const Color(0xFFB6BC9B) : Colors.grey[500],
+        size: 26,
       ),
     );
   }
 
   Widget _buildAddAmountModal() {
     return Container(
-      color: Colors.black.withOpacity(0.5),
+      color: Colors.black.withOpacity(0.3),
       child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 32),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.close, color: Colors.black),
-                        onPressed: _toggleAddAmountModal,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Enter Amount',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  const Text(
-                    'QAR 100.00',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 36),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _toggleAddAmountModal();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: const Text('Proceed'),
-                    ),
+                  IconButton(
+                    icon: const Icon(Icons.close, color: Colors.black),
+                    onPressed: _toggleAddAmountModal,
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              const Text(
+                'Enter Amount',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                'QAR 100.00',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 36),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _toggleAddAmountModal();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFB6BC9B),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text('Proceed'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildTransactionItem(String title, String amount, String imageUrl) {
+  Widget _buildPaymentSheet() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: Row(
+      decoration: const BoxDecoration(
+        color: Color(0xFFB6BC9B), // Sage green color from the image
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      padding: const EdgeInsets.only(top: 24, left: 20, right: 20, bottom: 32),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              imageUrl,
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => Container(
-                width: 50,
-                height: 50,
-                color: Colors.grey[300],
-                child: Icon(Icons.local_drink, color: Colors.grey[600]),
-              ),
+          // Handle bar
+          Container(
+            width: 40,
+            height: 4,
+            margin: const EdgeInsets.only(bottom: 24),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(2),
             ),
           ),
-          const SizedBox(width: 12),
-          Expanded(
+
+          // Payment For section
+          const Align(
+            alignment: Alignment.centerLeft,
             child: Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
+              "Payment For\nTEN 20 Pilates",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                height: 1.3,
               ),
             ),
           ),
-          Text(
-            amount,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+
+          // Divider line
+          Container(
+            height: 1,
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(vertical: 16),
+            decoration: const BoxDecoration(
+              color: Colors.white,
             ),
+          ),
+
+          // Amount
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "QR 100.00",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 32),
+
+          // Payment options section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Payment method buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'NAPS',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Pay',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'G Pay',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 24),
+
+              // Card input fields
+              Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Card number',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'MM/YY',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9CA67F), // Darker sage green
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'CVV',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 32),
+
+              // Pay Now button
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        const Color(0xFF9CA67F), // Darker sage green
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(28),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Pay Now',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildNavItem(IconData icon, bool isSelected) {
-    return Icon(
-      icon,
-      color: isSelected ? Colors.black : Colors.black54,
-      size: 24,
     );
   }
 }
