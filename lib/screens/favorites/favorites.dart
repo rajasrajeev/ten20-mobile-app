@@ -7,7 +7,7 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomLayout(
-      title: 'Favorites',
+      title: 'Calendar',
       body: SafeArea(
         child: Column(
           children: [
@@ -27,7 +27,7 @@ class FavoritesScreen extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Search favorites...',
+                          hintText: 'Search calendar...',
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: Colors.grey[500]),
                         ),

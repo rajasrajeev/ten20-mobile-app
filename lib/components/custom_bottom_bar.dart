@@ -29,8 +29,8 @@ class CustomBottomBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _buildBottomBarItem(
-            icon: Icons.favorite,
-            label: 'Favorites',
+            icon: Icons.calendar_month,
+            label: 'Calendar',
             index: 0,
             onTap: onTap,
           ),
@@ -70,8 +70,8 @@ class CustomBottomBar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: 15,
-            color: Colors.black,
+            size: 23,
+            color: const Color.fromARGB(220, 0, 0, 0),
           ),
           const SizedBox(height: 5),
           Text(

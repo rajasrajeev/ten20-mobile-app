@@ -48,8 +48,8 @@ class CategoryCard extends StatelessWidget {
               time ?? "",
               style: TextStyle(
                 color: isSelected ? selectedTextColor : unselectedTextColor,
-                fontWeight: FontWeight.w400,
-                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                fontSize: 11,
                 fontFamily: 'Aromatica',
               ),
             ),
@@ -99,7 +99,8 @@ class CategoryCard extends StatelessWidget {
                       color: isSelected
                           ? selectedTextColor.withOpacity(0.8)
                           : unselectedTextColor.withOpacity(0.8),
-                      fontSize: 10,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
                       fontFamily: 'Aromatica',
                     ),
                   ),
@@ -117,6 +118,7 @@ class CategoryCard extends StatelessWidget {
                                   ? selectedTextColor
                                   : unselectedTextColor,
                               fontSize: 9,
+                              fontWeight: FontWeight.w600,
                               fontFamily: 'Aromatica',
                             ),
                           ),
@@ -129,6 +131,7 @@ class CategoryCard extends StatelessWidget {
                                   ? selectedTextColor
                                   : unselectedTextColor,
                               fontSize: 9,
+                              fontWeight: FontWeight.w600,
                               fontFamily: 'Aromatica',
                             ),
                           ),

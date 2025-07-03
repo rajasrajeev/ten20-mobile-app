@@ -30,7 +30,7 @@ class OrderFinalScreen extends StatelessWidget {
                           fit: BoxFit.cover, // Adjust the image fit as needed
                         ),
                         const Positioned(
-                          top: 50,
+                          top: 30,
                           child: Icon(
                             Icons.check,
                             color: Colors.white,

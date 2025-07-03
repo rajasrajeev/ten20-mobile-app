@@ -228,7 +228,7 @@ class _PilatesLoftPageState extends State<PilatesLoftPage> {
                         "Welcome to our Pilates studio — a calm, empowering space where movement meets mindfulness. Personalized sessions, expert guidance, and a focus on strength from within.",
                         style: TextStyle(
                             color: Color.fromARGB(255, 131, 135, 100),
-                            fontSize: 10,
+                            fontSize: 11,
                             fontFamily: 'Aromatica'),
                       ),
                     ],

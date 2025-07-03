@@ -80,7 +80,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.favorite),
-              title: const Text('Favorites'),
+              title: const Text('Calendar'),
               onTap: () {
                 Navigator.pop(context); // Close the drawer first
                 Future.delayed(const Duration(milliseconds: 300), () {

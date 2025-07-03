@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
 import 'package:ten20/screens/wallet/membership_details_screen.dart';
-import 'package:ten20/utils/constants.dart';
+// import 'package:ten20/utils/constants.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});

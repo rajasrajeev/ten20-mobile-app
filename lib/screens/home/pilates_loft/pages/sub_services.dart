@@ -231,7 +231,7 @@ class _SubServicePageState extends State<SubServicePage> {
     );
   }
 
-  void _showPaymentMethodPopup(BuildContext context, String price) {
+  void showPaymentMethodPopup(BuildContext context, String price) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -621,7 +621,7 @@ class _SubServicePageState extends State<SubServicePage> {
                                     const EdgeInsets.symmetric(vertical: 16),
                               ),
                               onPressed: () {
-                                _showPaymentMethodPopup(
+                                showPaymentMethodPopup(
                                     context, services[0].price);
                                 // Navigator.of(context).push(MaterialPageRoute(
                                 //   builder: (context) => AssistantScreen(

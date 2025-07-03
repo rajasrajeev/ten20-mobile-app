@@ -4,8 +4,10 @@ import 'package:intl/intl.dart';
 
 import 'package:ten20/components/custom_button.dart';
 import 'package:ten20/components/custom_layout_inner.dart';
+import 'package:ten20/screens/home/hair_bar/pages/order_final_screen.dart';
 // import 'package:ten20/screens/home/hair_bar/pages/order_final_screen.dart';
-import 'package:ten20/screens/home/hair_bar/pages/payment_screen2.dart';
+// import 'package:ten20/screens/home/hair_bar/pages/payment_screen2.dart';
+import 'package:ten20/screens/wallet/wallet.dart';
 // import 'package:ten20/components/service_card.dart';
 // import 'package:ten20/screens/home/hair_bar/page/order_final_screen.dart';
 import 'package:ten20/utils/api_service.dart';
@@ -71,6 +73,176 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   void initState() {
     super.initState();
     getTimeSlots();
+  }
+
+  void showPaymentMethodPopup(BuildContext context, String price) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFFB7B89F),
+                Color(0xFFA8A98A),
+              ],
+            ),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Handle bar
+                Container(
+                  width: 50,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Header
+                const Column(
+                  children: [
+                    Text(
+                      'Payment Method',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'TEN 20 Pilates',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                // Payment options
+                Row(
+                  children: [
+                    // Wallet option
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          // Handle wallet payment
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const WalletScreen(),
+                            ),
+                          );
+                          // Add your wallet payment logic here
+                        },
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Wallet',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF6B799A),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    // Add Funds option
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          // Handle add funds
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const WalletScreen(),
+                            ),
+                          );
+                          // Add your add funds logic here
+                        },
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Add Funds',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF6B799A),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 25),
+                // Book Slot Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white.withOpacity(0.9),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      // Handle book slot
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const OrderFinalScreen(),
+                        ),
+                      );
+                      // Add your booking logic here
+                    },
+                    child: Text(
+                      'Book Slot - $price QR',
+                      style: const TextStyle(
+                        color: Color(0xFF6B799A),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -286,7 +458,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 margin: const EdgeInsets.only(
                     left: 10, right: 10, top: 10, bottom: 10),
                 child: CustomButton(
-                  bgColor: kNailsDinerColor,
+                  bgColor: kHairBarColor,
                   borderRadius: 50.0,
                   bgIconColor: Colors.white,
                   bgTextColor: Colors.white,
@@ -295,6 +467,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   vertical: 10.0,
                   horizontal: 5.0,
                   onPressed: () {
+                    showPaymentMethodPopup(context, "40 QR");
                     // showDialog(
                     //   context: context,
                     //   barrierDismissible: false,
@@ -311,8 +484,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                     //     );
                     //   },
                     // );
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PaymentScreen2Page(id: 1)));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => PaymentScreen2Page(id: 1)));
                   },
                 ),
               )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:ten20/screens/wallet/wallet.dart';
 
 // Api end point
 
@@ -30,7 +31,7 @@ const TextStyle contentHeader2 = TextStyle(
     color: Colors.white,
     fontFamily: 'Aromatica',
     fontSize: 15,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     letterSpacing: 0.00000001);
 const TextStyle contentHeader3 = TextStyle(
     color: Color.fromARGB(159, 0, 0, 0),
@@ -41,7 +42,7 @@ const TextStyle contentHeader4 = TextStyle(
     color: Colors.white,
     fontFamily: 'Aromatica',
     fontSize: 13,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     letterSpacing: 0.00000001);
 
 TextStyle contentDescription({Color color = Colors.white}) {
