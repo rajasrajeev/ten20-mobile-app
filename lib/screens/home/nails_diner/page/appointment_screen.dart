@@ -451,7 +451,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 200),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 80),
                 margin: const EdgeInsets.only(
                     left: 10, right: 10, top: 10, bottom: 10),
                 child: CustomButton(

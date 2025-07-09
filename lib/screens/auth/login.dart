@@ -77,7 +77,7 @@ class _LoginState extends State<Login> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 0),
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.width / 4,
                   child: Image.asset(
                     'assets/images/splash_screen_image.png',
                     fit: BoxFit.fill,
