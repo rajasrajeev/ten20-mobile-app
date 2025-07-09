@@ -73,6 +73,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: mainBgColor,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

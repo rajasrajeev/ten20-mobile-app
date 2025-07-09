@@ -152,7 +152,7 @@ class _NailsDinerPageState extends State<NailsDinerPage> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color.fromARGB(255, 131, 135, 100),
-                              fontSize: 10,
+                              fontSize: 13,
                               fontFamily: 'Aromatica'),
                         ),
                       ),

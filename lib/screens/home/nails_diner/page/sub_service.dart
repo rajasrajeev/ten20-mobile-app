@@ -188,11 +188,13 @@ class _SubServicePageState extends State<SubServicePage> {
                       title: service.title,
                       price: service.price,
                       description: service.description,
+                      height: 140,
                     ),
                   );
                 },
               ),
             ),
+            const SizedBox(height: 80),
           ],
         ),
       ),

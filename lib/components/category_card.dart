@@ -24,6 +24,12 @@ class CategoryCard extends StatelessWidget {
         height: height,
         child: Container(
           decoration: BoxDecoration(
+              border: Border.all(
+                color: isSelected
+                    ? Color.fromARGB(255, 0, 0, 0)
+                    : Color.fromARGB(255, 255, 255, 255),
+                width: isSelected ? 1.0 : 1.0,
+              ),
               borderRadius: BorderRadius.circular(15),
               color: isSelected
                   ? bgColor

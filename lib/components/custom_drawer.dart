@@ -49,11 +49,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage(
-                        'assets/images/user.png'), // Your profile image
-                  ),
+                  // const CircleAvatar(
+                  //   radius: 40,
+                  //   backgroundImage: AssetImage(
+                  //       'assets/images/user.png'),
+                  // ),
                   const SizedBox(height: 8),
                   Text(
                     '$firstName $lastName',

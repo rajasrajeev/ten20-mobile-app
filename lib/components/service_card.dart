@@ -33,6 +33,12 @@ class ServiceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? bgColor : Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+          color: isSelected
+              ? Color.fromARGB(255, 0, 0, 0)
+              : Color.fromARGB(255, 255, 255, 255),
+          width: isSelected ? 1.0 : 1.0,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,8 +60,8 @@ class ServiceCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.0),
                 child: Image.network(
                   imageUrl,
-                  width: 60,
-                  height: 40,
+                  width: 100,
+                  height: 60,
                   fit: BoxFit.cover,
                 ),
               ),

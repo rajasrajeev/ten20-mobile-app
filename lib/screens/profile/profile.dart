@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             // Profile Header
             Container(
               padding: const EdgeInsets.all(16),
-              color: const Color(0xFFE6D7E9),
+              // color: const Color(0xFFE6D7E9),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
@@ -72,18 +72,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: ListView(
                 children: [
-                  _buildMenuItem(
-                      context, 'My Orders', Icons.shopping_bag_outlined),
+                  // _buildMenuItem(
+                  //     context, 'My Orders', Icons.shopping_bag_outlined),
                   _buildMenuItem(
                       context, 'My Cart', Icons.shopping_cart_outlined),
                   _buildMenuItem(
                       context, 'Customer Support', Icons.headset_mic_outlined),
-                  _buildMenuItem(context, 'My Wishlist', Icons.favorite_border),
-                  _buildMenuItem(context, 'My Reviews', Icons.star_border),
+                  // _buildMenuItem(context, 'My Wishlist', Icons.favorite_border),
+                  // _buildMenuItem(context, 'My Reviews', Icons.star_border),
                   _buildMenuItem(
                       context, 'Payment Details', Icons.payment_outlined),
-                  _buildMenuItem(
-                      context, 'Address', Icons.location_on_outlined),
+                  // _buildMenuItem(
+                  //     context, 'Address', Icons.location_on_outlined),
                   _buildMenuItem(
                       context, 'Delete Account', Icons.delete_outline),
                   _buildMenuItem(context, 'Settings', Icons.settings_outlined),

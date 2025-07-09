@@ -49,7 +49,7 @@ TextStyle contentDescription({Color color = Colors.white}) {
   return TextStyle(
       color: color,
       fontFamily: 'Aromatica',
-      fontSize: 10,
+      fontSize: 14,
       fontWeight: FontWeight.w800);
 }
 
@@ -57,7 +57,7 @@ TextStyle contentDescription2({Color color = Colors.white}) {
   return TextStyle(
     color: color,
     fontFamily: 'Aromatica',
-    fontSize: 10,
+    fontSize: 13,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.00000001,
   );

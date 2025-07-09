@@ -253,26 +253,6 @@ class _SubService2PageState extends State<SubService2Page> {
                               fontFamily: "Aromatica",
                               fontWeight: FontWeight.w300,
                               fontSize: 25)),
-                      Padding(
-                        padding: EdgeInsets.only(left: 30.0, top: 25.0),
-                        child: Row(
-                          children: <Widget>[
-                            Text("30 Mins",
-                                style: TextStyle(
-                                    color: kDefaultBgTextColor,
-                                    fontFamily: "Aromatica",
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 17)),
-                            SizedBox(width: 10),
-                            Text("40 QR",
-                                style: TextStyle(
-                                    color: kDefaultBgTextColor,
-                                    fontFamily: "Aromatica",
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 17)),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 ),

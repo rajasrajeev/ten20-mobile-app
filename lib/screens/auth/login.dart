@@ -67,6 +67,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: mainBgColor,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

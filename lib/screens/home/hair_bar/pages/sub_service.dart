@@ -169,6 +169,7 @@ class _SubServicePageState extends State<SubServicePage> {
                       description: service.description,
                       bgColor: kHairBarColor,
                       isSelected: isSelectedId == service.id,
+                      height: 140,
                     ),
                   );
                 },
