@@ -45,10 +45,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 16),
-                  const CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage('assets/images/user.png'),
-                  ),
+                  // const CircleAvatar(
+                  //   radius: 40,
+                  //   backgroundImage: AssetImage('assets/images/user.png'),
+                  // ),
                   const SizedBox(height: 8),
                   Text(
                     '$firstName $lastName',
